@@ -1,8 +1,13 @@
 <template lang="pug">
-div.infoModel
-    div.direction(contenteditable="plaintext-only" @focus="getFocus()" @blur="getBlur()" @input="changeInfo") {{infoContent}}
+  div.infoModel
+    div.direction(
+      contenteditable="plaintext-only"
+      @focus="getFocus()"
+      @blur="getBlur()"
+      @input="changeInfo"
+      ) {{infoContent}}
         div.tip
-            p#tip.hidden click here to input teaching direction...
+          p#tip.hidden click here to input teaching direction...
 </template>
 
 <script>
@@ -16,7 +21,7 @@ export default {
 
   },
   methods: {
-    _moveEnd(obj) {
+    moveEnd(obj) {
       obj.focus();
       const len = obj.innerText.length;
       let sel;
@@ -45,7 +50,7 @@ export default {
     changeInfo(val) {
       const element = document.querySelector('div.direction');
       this.infoContent = val.target.innerText;
-      this._moveEnd(element);
+      this.moveEnd(element);
     },
   },
 };
@@ -57,7 +62,7 @@ export default {
         width: 100%;
         padding: 0 10px 10px 0;
     & > div.direction{
-          border: var(--borderWidth) solid var(--borderColor);
+          border: 1px solid #ddd;
           border-radius: 5px;
           height: 130px;
           overflow-y: scroll;
